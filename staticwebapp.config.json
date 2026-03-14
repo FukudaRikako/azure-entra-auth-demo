@@ -12,6 +12,6 @@
     }
   },
   "navigationFallback": {
-    "rewrite": "/data-future-presentation.html"
+    "rewrite": "/index.html"
   }
 }
