@@ -1,17 +1,17 @@
 # 同じHTMLファイルを「全公開」にも「認証付き」にもできるデモ
 
-## 🔓 GitHub = 誰でも見れる ／ 🔐 Azure = 許可された人だけ
+## 🔓 認証なし vs 🔐 認証あり — 違いは設定ファイル1つだけ
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
 │                     同じ HTML ファイル                             │
 ├────────────────────────────┬─────────────────────────────────────┤
 │                            │                                     │
-│  📂 GitHub に置くと...      │  ☁️ Azure に置くと...                │
+│  � Azure（認証なし）       │  🔐 Azure（認証あり）                │
 │                            │                                     │
-│  🔓 誰でもアクセスできる     │  🔐 Entra ID ログインが必要          │
+│  設定ファイルなし            │  staticwebapp.config.json あり       │
 │                            │                                     │
-│  → URLを知っていれば        │  → 指定した組織・ユーザーだけ         │
+│  → URLを知っていれば        │  → Entra ID でログインした人だけ      │
 │    世界中の誰でも閲覧可能    │    ページを閲覧できる                 │
 │                            │                                     │
 │  🌍 全公開                  │  🏢 社内限定公開                     │
@@ -19,18 +19,22 @@
 └────────────────────────────┴─────────────────────────────────────┘
 ```
 
-> **ポイント：** HTMLファイル自体は同じもの。
-> 違いは **Azure に設定ファイルを1つ追加するだけ。** それだけで Entra ID による認証が実現します。
+> **ポイント：** 両方とも Azure Static Web Apps にデプロイされた同じHTMLファイル。
+> 違いは **設定ファイル（`staticwebapp.config.json`）を1つ追加するかしないか** だけ。それだけで Entra ID による認証が実現します。
 
 ---
 
 ## 🎯 実際に見比べてみてください
 
-| | 🔓 GitHub（全公開） | 🔐 Azure（認証付き） |
+| | 🔓 Azure（認証なし・全公開） | 🔐 Azure（認証付き） |
 |---|---|---|
-| **URL** | [GitHub上のHTMLソース](https://github.com/FukudaRikako/azure-entra-auth-demo/blob/main/index.html) | [Azure上のサイト](https://gentle-pebble-053949610.1.azurestaticapps.net) |
+| **URL** | [認証なしサイト](https://mango-tree-0ee71ed10.6.azurestaticapps.net) | [認証ありサイト](https://gentle-pebble-053949610.1.azurestaticapps.net) |
 | **アクセス** | 誰でも見れる | Entra ID ログインが必要 |
-| **シークレットブラウザで開くと** | そのまま見れる | ログイン画面が表示される ✋ |
+| **シークレットブラウザで開くと** | そのまま表示される | ログイン画面が表示される ✋ |
+| **設定ファイル** | なし | `staticwebapp.config.json` あり |
+| **GitHub** | [azure-no-auth-demo](https://github.com/FukudaRikako/azure-no-auth-demo) | [azure-entra-auth-demo](https://github.com/FukudaRikako/azure-entra-auth-demo) |
+
+> **HTMLファイルは完全に同じ。** 違いは `staticwebapp.config.json` が **あるかないか** だけ！
 
 ---
 
